@@ -28,14 +28,14 @@ public class ExamineFloat {
 	private static float getFloat() {
 		Scanner scanner = new Scanner(System.in);
 		float number;
+		boolean hasFloat;
 		
-		do {
-			System.out.println("Input floating point number to be checked: ");
-		} while (!scanner.hasNextFloat()); 
+		System.out.println("Input floating point number to be checked: ");
+		if (scanner.hasNextFloat()) { 
+			number = scanner.nextFloat();	
+		} else number = 0; // need to fix this one, not sure how to handle input error
 		
-		number = scanner.nextFloat();
 		scanner.close();
-		
 		return number;
 	}
 	
