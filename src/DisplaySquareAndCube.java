@@ -8,6 +8,7 @@ public class DisplaySquareAndCube {
 		
 		System.out.println("Square of 10 is: " + numSquared);
 		System.out.println("Cube of 10 is: " + numCubed);
+		
 
 	}
 
