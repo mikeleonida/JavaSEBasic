@@ -28,7 +28,6 @@ public class ExamineFloat {
 	private static float getFloat() {
 		Scanner scanner = new Scanner(System.in);
 		float number;
-		boolean hasFloat;
 		
 		System.out.println("Input floating point number to be checked: ");
 		if (scanner.hasNextFloat()) { 
