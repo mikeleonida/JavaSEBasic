@@ -1,28 +1,27 @@
+import java.util.HashMap;
+import java.util.Map;
 
-public class BankApp {
-
+// this solution uses HashMap
+public class Bank {
+	
+	private static Map<Integer, BankAccount> displayDecrCustList = new HashMap<Integer, BankAccount>();
+	private static BankAccount[] customers = new BankAccount[4];
+	
 	public static void main(String[] args) {
-		BankAccount[] customers = new BankAccount[4];
-		
-		customers[0] = new BankAccount(100, "Harish", 200);
-		customers[1] = new BankAccount(101, "Michael", 3000);
+		customers[0] = new BankAccount(100, "Harish", 2000);
+		customers[1] = new BankAccount(101, "Michael", 20000);
 		customers[2] = new BankAccount(102, "Sean", 2000);
-		customers[3] = new BankAccount(103, "Emmanuel", 800);
-		
-		int[] customerOrderArray = getDecreasingOrderArray(customers);
+		customers[3] = new BankAccount(103, "Emmanuel", 20000);
+
+		processArrayDecrOrder();
 		
 		// display
 		for (int i=0; i<customers.length; i++) {
-			for (int j=0; j<customers.length; j++) {
-				if ( customerOrderArray[j]==i ) {
-					System.out.println(customers[j].toString());
-				}
-			}
+			System.out.println(displayDecrCustList.get(i));
 		}
-		
 	}
 
-	public static int[] getDecreasingOrderArray(BankAccount[] customers) {
+	public static void processArrayDecrOrder() {
 		int[] customerOrderArray = new int[4];
 		int[] customerEqualArray = new int[4];
 		
@@ -39,14 +38,14 @@ public class BankApp {
 					noBigger++;
 				}
 			}
-			
 			customerOrderArray[i] = noBigger;
 			
 			if (noEqual > 1) {
 				customerEqualArray[i] = noEqual - 1;
 			}
 		}
-				
+			
+		// resolve order of display for accounts with same balance
 		for (int i =0; i<customerEqualArray.length; i++) {
 			int noEqual = customerEqualArray[i];
 			int j = i+1;
@@ -60,10 +59,14 @@ public class BankApp {
 				j++;
 			}
 			// Just for consistency purposes 
-			customerEqualArray[i] = 0;
+			customerEqualArray[i] = noEqual;
 		}
 		
-		return customerOrderArray;
+		for (int i=0; i<customerOrderArray.length; i++) {
+			displayDecrCustList.put(customerOrderArray[i], customers[i]);
+		}
+		
+		return;
 	}
 
 }
