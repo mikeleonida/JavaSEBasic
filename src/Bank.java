@@ -10,8 +10,8 @@ public class Bank {
 		BankAccount[] customers = new BankAccount[4];
 		
 		customers[0] = new BankAccount(100, "Harish", 2000);
-		customers[1] = new BankAccount(101, "Michael", 20000);
-		customers[2] = new BankAccount(102, "Sean", 2000);
+		customers[1] = new BankAccount(101, "Michael", 20003);
+		customers[2] = new BankAccount(102, "Sean", 2005);
 		customers[3] = new BankAccount(103, "Emmanuel", 20000);
 
 		processArrayDecrOrder(customers);
