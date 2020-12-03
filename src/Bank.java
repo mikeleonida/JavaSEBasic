@@ -4,16 +4,17 @@ import java.util.Map;
 // this solution uses HashMap
 public class Bank {
 	
-	private static Map<Integer, BankAccount> displayDecrCustList = new HashMap<Integer, BankAccount>();
-	private static BankAccount[] customers = new BankAccount[4];
+	private static Map<Integer, BankAccount> displayDecrCustList = new HashMap<Integer, BankAccount>();	
 	
 	public static void main(String[] args) {
+		BankAccount[] customers = new BankAccount[4];
+		
 		customers[0] = new BankAccount(100, "Harish", 2000);
 		customers[1] = new BankAccount(101, "Michael", 20000);
 		customers[2] = new BankAccount(102, "Sean", 2000);
 		customers[3] = new BankAccount(103, "Emmanuel", 20000);
 
-		processArrayDecrOrder();
+		processArrayDecrOrder(customers);
 		
 		// display
 		for (int i=0; i<customers.length; i++) {
@@ -21,7 +22,7 @@ public class Bank {
 		}
 	}
 
-	public static void processArrayDecrOrder() {
+	public static void processArrayDecrOrder(BankAccount[] customers) {
 		int[] customerOrderArray = new int[4];
 		int[] customerEqualArray = new int[4];
 		
@@ -49,7 +50,7 @@ public class Bank {
 		for (int i =0; i<customerEqualArray.length; i++) {
 			int noEqual = customerEqualArray[i];
 			int j = i+1;
-			while (noEqual>0 && j<customerEqualArray.length) {
+			while (noEqual > 0 && j < customerEqualArray.length) {
 				if ( customers[i].getBal() == customers[j].getBal() ) {
 					noEqual--;
 					customerOrderArray[j] = customerOrderArray[j]+1;
@@ -58,15 +59,13 @@ public class Bank {
 				
 				j++;
 			}
-			// Just for consistency purposes 
+			// Just for consistency purposes zero/store remaining unresolved equal balances
 			customerEqualArray[i] = noEqual;
 		}
 		
 		for (int i=0; i<customerOrderArray.length; i++) {
 			displayDecrCustList.put(customerOrderArray[i], customers[i]);
 		}
-		
-		return;
 	}
 
 }
