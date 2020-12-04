@@ -12,6 +12,7 @@ public class Main {
 				"Select name, age from data.csv order by name",
 				"Select name, age from data.csv group by city",
 				"",
+				"aaa ",
 				"NotSelect name, age from ",
 				"Update data.csv set city=NewYork where age < 50"};
 		
@@ -29,7 +30,7 @@ public class Main {
 			System.out.println("Ex. 4 Order By = " + pq.getQueryOrderBy());
 			System.out.println("Ex. 5 Group By = " + pq.getQueryGroupBy());
 			System.out.println("Ex. 6 Projected Fields: ");
-			for (String word : pq.getQueryProjectedFields("Select")) {
+			for (String word : pq.getQueryProjectedFields(queries[i].split(" ")[0])) {
 				System.out.println("\t" + word);
 			}
 			System.out.println("Ex. 7 File name = " + pq.getQueryFileName());
