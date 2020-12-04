@@ -51,7 +51,12 @@ public class ParseQuery {
 	}
 	
 	public String getQueryFileName() {
-		return getMainQuery().split(" from ")[1];
+		String[] words = getMainQuery().split(" from ");
+		if (words.length > 1) {
+			return words[1];
+		}
+		
+		return "none";
 	}
 	
 	
