@@ -12,7 +12,7 @@ public class ParseQuery {
 	}
 	
 	public String[] getAllQueryWords() {
-		return query.replace( "," , "" ).split(" ");
+		return query.replace( ", " , " " ).split(" ");
 	}
 
 	public String getMainQuery() {
@@ -47,7 +47,8 @@ public class ParseQuery {
 	}
 	
 	public String[] getQueryProjectedFields(String firstKeyword) {
-		return query.replace(firstKeyword+" ", "").split(" from ")[0].replace(",","").split(" ");
+		return query.replace(firstKeyword+" ", "").split(" from ")[0].split(" where ")[0]
+				.split(" order by ")[0].split(" group by ")[0].replace(", "," ").split(" ");
 	}
 	
 	public String getQueryFileName() {
