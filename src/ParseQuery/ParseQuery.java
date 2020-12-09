@@ -1,4 +1,4 @@
-package ParseQuery;
+package parsequery;
 
 public class ParseQuery {
 	private String query = "";
